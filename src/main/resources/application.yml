@@ -1,0 +1,21 @@
+micronaut:
+  server:
+    port: 9095
+  environment: test
+datasources:
+  default:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;MODE=MySQL;INIT=create domain if not exists json as text;
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
+    dialect: MYSQL
+endpoints:
+  prometheus:
+    sensitive: false
+  flyway:
+    enabled: true
+    sensitive: false
+flyway:
+  datasources:
+    default:
+      locations: classpath:db.migration
